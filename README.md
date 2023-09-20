@@ -23,3 +23,5 @@ To run this app locally, follow these steps:
 2. Navigate to the project directory: `cd currency-converter`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
+
+[API](https://exchangeratesapi.io)
