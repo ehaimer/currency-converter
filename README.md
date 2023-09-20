@@ -19,7 +19,7 @@ To use the Currency Converter App, simply enter the amount you want to convert, 
 
 To run this app locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/currency-converter.git`
+1. Clone the repository: `git clone https://github.com/ehaimer/currency-converter`
 2. Navigate to the project directory: `cd currency-converter`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
