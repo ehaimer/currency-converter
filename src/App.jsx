@@ -1,14 +1,15 @@
-import './App.css';
+import "./App.css"
+import CurrencyRow from "./components/CurrencyRow"
 
 function App() {
   const apiKey = process.env.REACT_APP_API_KEY
   const baseURL = process.env.REACT_APP_BASE_URL
 
   return (
-    <div className="App">
-    <h1>Hello World</h1>
-    </div>
-  );
+    <main className="container">
+      <CurrencyRow />
+    </main>
+  )
 }
 
-export default App;
+export default App
