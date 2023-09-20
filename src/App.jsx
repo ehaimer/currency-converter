@@ -7,7 +7,14 @@ function App() {
 
   return (
     <main className="container">
-      <CurrencyRow />
+      <h1>The Currency Converter</h1>
+      <div className="from-row">
+        <CurrencyRow />
+      </div>
+      <div className="equal">=</div>
+      <div className="to-row">
+        <CurrencyRow />
+      </div>
     </main>
   )
 }
