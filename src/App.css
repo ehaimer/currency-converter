@@ -66,12 +66,12 @@ button:active {
   transform: scale(0.9);
 }
 
-.from-row {
+.top-row {
   display: flex;
   column-gap: 0.5rem;
 }
 
-.to-row {
+.bottom-row {
   display: flex;
   column-gap: 0.5rem;
   flex-direction: row-reverse;
