@@ -3,40 +3,59 @@ import CurrencyRow from "./components/CurrencyRow"
 import { useEffect, useState } from "react"
 
 function App() {
+  const TEMP_LOCAL_STORAGE_KEY = "temp"
   const apiKey = process.env.REACT_APP_API_KEY
   const BASE_URL = "https://api.freecurrencyapi.com/v1/"
   const endpointURL = `${BASE_URL}latest?apikey=${apiKey}`
-  console.log(endpointURL)
-  //  &currencies=EUR%2CUSD%2CCAD&base_currency=BRL
+  // const [counterKeys, setCounterKeys] = useState([])
 
-  const[currencies, setCurrencies] = useState({})
+  const [currencies, setCurrencies] = useState(() => {
+    JSON.parse(localStorage.getItem(TEMP_LOCAL_STORAGE_KEY)) ||
+      fetch(endpointURL)
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem(
+            TEMP_LOCAL_STORAGE_KEY,
+            JSON.stringify(data.data)
+          )
+          return data.data
+        })
+  })
 
   useEffect(() => {
     fetch(endpointURL)
       .then((res) => res.json())
-      .then((data) => setCurrencies(data.data))
+      .then((data) => {
+        setCurrencies(data.data)
+        localStorage.setItem(TEMP_LOCAL_STORAGE_KEY, JSON.stringify(data.data))
+      })
   }, [])
 
-  useEffect(() => {
-    const keys = Object.keys(currencies)
-    keys.map(key => console.log(key, currencies[key]))
-    const values = Object.values(currencies)
-    values.map(value => console.log(value))
-    for(let key in currencies) {
-      console.log(key, currencies[key])
-    }
-  }, [currencies])
+  // useEffect(() => {
+  //   if(currencies) {
+  //     const keys = Object.keys(currencies)
+  //     keys.map((key) => console.log(key, currencies[key]))
+  //     const values = Object.values(currencies)
+  //     values.map((value) => console.log(value))
+  //   }
+  // }, [currencies])
+
+  //  &currencies=EUR%2CUSD%2CCAD&base_currency=BRL
 
   return (
     <main className="container">
       <h1>The Currency Converter</h1>
-      <div className="from-row">
-        <CurrencyRow />
-      </div>
+      {currencies && (
+        <div className="from-row">
+          <CurrencyRow currencies={currencies} />
+        </div>
+      )}
       <div className="equal">=</div>
-      <div className="to-row">
-        <CurrencyRow />
-      </div>
+      {currencies && (
+        <div className="to-row">
+          <CurrencyRow currencies={currencies} />
+        </div>
+      )}
     </main>
   )
 }
