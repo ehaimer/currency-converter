@@ -1,15 +1,16 @@
 .container {
   width: 80%;
+  min-width: 330px;
+  max-width: 1000px;
   margin-top: 4rem;
   margin-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
-  height: 60vh;
+  height: 45vh;
   border-radius: 0.3rem;
   box-shadow: 0 0 20px hsl(265, 33%, 79%);
   display: flex;
   flex-direction: column;
-  /* row-gap: 1rem; */
   justify-content: center;
   align-items: center;
 }
@@ -20,6 +21,7 @@ h1 {
   font-weight: 700;
   color: hsl(332, 87%, 61%);
   margin-bottom: 1rem;
+  margin-top: 3rem;
 }
 
 select {
