@@ -1,6 +1,6 @@
 # Currency Converter App
 
-![Currency Converter App Image](https://raw.githubusercontent.com/ehaimer/currency-converter/main/currency-converter.jpg)
+![Currency Converter App Image](https://raw.githubusercontent.com/ehaimer/currency-converter/main/src/currency-converter.jpg)
 
 ## Overview
 
