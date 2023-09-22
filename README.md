@@ -2,7 +2,7 @@
 
 <!-- ![Currency Converter App Image](https://raw.githubusercontent.com/ehaimer/currency-converter/main/src/currency-converter.jpg) -->
 
-<img src="https://raw.githubusercontent.com/ehaimer/currency-converter/main/src/currency-converter.jpg" alt="Currency Converter App Image" style="max-width: 400px;" />
+<img src="https://raw.githubusercontent.com/ehaimer/currency-converter/main/src/currency-converter.jpg" alt="Currency Converter App Image" style="max-width: 200px;" />
 
 
 ## Overview
