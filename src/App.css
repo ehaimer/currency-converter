@@ -47,6 +47,8 @@ input {
 button {
   margin-top: 2rem;
   margin-bottom: 1.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   width: 7rem;
   height: 2.5rem;
   border-radius: 0.3rem;

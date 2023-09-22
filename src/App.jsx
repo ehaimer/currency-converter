@@ -1,64 +1,59 @@
 import "./App.css"
-// import CurrencyRow from "./components/CurrencyRow"
 import { useEffect, useState, useRef } from "react"
 
 function App() {
-  const topRef = useRef()
-  const bottomRef = useRef()
   const topCountryRef = useRef()
   const bottomCountryRef = useRef()
-  const TEMP_LOCAL_STORAGE_KEY = "temp"
   const apiKey = process.env.REACT_APP_API_KEY
   const BASE_URL = "https://api.freecurrencyapi.com/v1/"
   const endpointURL = `${BASE_URL}latest?apikey=${apiKey}`
-  const [currencies, setCurrencies] = useState({})
   const [keys, setKeys] = useState([])
   const [showNotification, setShowNotification] = useState(false)
-  // const [values, setValues] = useState([])
+  const [topValue, setTopValue] = useState("")
+  const [bottomValue, setBottomValue] = useState("")
 
   useEffect(() => {
-    setCurrencies(
-      JSON.parse(localStorage.getItem(TEMP_LOCAL_STORAGE_KEY)) ||
-        fetch(endpointURL)
-          .then((res) => res.json())
-          .then((data) => {
-            localStorage.setItem(
-              TEMP_LOCAL_STORAGE_KEY,
-              JSON.stringify(data.data)
-            )
-            return data.data
-          })
-    )
+    fetch(endpointURL)
+      .then((res) => res.json())
+      .then((data) => {
+        setKeys(Object.keys(data.data))
+      })
   }, [])
 
-  useEffect(() => {
-    setKeys(Object.keys(currencies))
-    // setValues(Object.values(currencies))
-  }, [currencies])
-
-  const handleEnter = (e) => {
+  const handleEnter = async () => {
     setShowNotification(false)
-    const topValue = parseFloat(topRef.current.value)
-    const bottomValue = parseFloat(bottomRef.current.value)
-    // const topCountry = topCountryRef.current.value
-    // const bottomCountry = topCountryRef.current.value
+    const topValueAmount = parseFloat(topValue)
+    const bottomValueAmount = parseFloat(bottomValue)
+    const topCountry = topCountryRef.current.value
+    const bottomCountry = bottomCountryRef.current.value
 
     if (
-      (isNaN(topValue) && isNaN(bottomValue)) ||
-      (!isNaN(topValue) && !isNaN(bottomValue))
+      (isNaN(topValueAmount) && isNaN(bottomValueAmount)) ||
+      (!isNaN(topValueAmount) && !isNaN(bottomValueAmount))
     ) {
       setShowNotification(true)
     } else {
       setShowNotification(false)
-      //  &currencies=EUR&base_currency=BRL
+      const URL = `${BASE_URL}latest?apikey=${apiKey}&currencies=${
+        !isNaN(topValueAmount) ? bottomCountry : topCountry
+      }&base_currency=${!isNaN(topValueAmount) ? topCountry : bottomCountry}`
+      console.log(URL)
+      const response = await fetch(URL)
+      const data = await response.json()
+      const filteredData = data.data
+      console.log(filteredData)
+      if (!isNaN(topValueAmount)) {
+        setBottomValue(filteredData[bottomCountry] * topValueAmount)
+      } else {
+        setTopValue(filteredData[topCountry] * bottomValueAmount)
+      }
     }
   }
 
-
-  return (
+  https: return (
     <main className="container">
       <h1>The Currency Converter</h1>
-      {currencies && (
+      {keys && (
         <div className="top-row">
           <select ref={topCountryRef}>
             {keys.map((key) => (
@@ -67,11 +62,16 @@ function App() {
               </option>
             ))}
           </select>
-          <input type="number" placeholder="Enter Amount" ref={topRef} />
+          <input
+            type="number"
+            placeholder="Enter Amount"
+            onChange={(e) => setTopValue(e.target.value)}
+            value={topValue}
+          />
         </div>
       )}
       <div className="equal">=</div>
-      {currencies && (
+      {keys && (
         <div className="bottom-row">
           <select ref={bottomCountryRef}>
             {keys.map((key) => (
@@ -80,10 +80,24 @@ function App() {
               </option>
             ))}
           </select>
-          <input type="number" placeholder="Enter Amount" ref={bottomRef} />
+          <input
+            type="number"
+            placeholder="Enter Amount"
+            onChange={(e) => setBottomValue(e.target.value)}
+            value={bottomValue}
+          />
         </div>
       )}
-      <button onClick={handleEnter}>Enter</button>
+      <div>
+        <button onClick={handleEnter}>Enter</button>
+        <button
+          onClick={() => {
+            setBottomValue("", setTopValue(""), setShowNotification(false))
+          }}
+        >
+          New
+        </button>
+      </div>
       <p
         className={`notification ${
           showNotification ? "display-element" : "display-none"
