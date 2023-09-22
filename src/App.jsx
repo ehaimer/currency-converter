@@ -26,7 +26,6 @@ function App() {
     const bottomValueAmount = parseFloat(bottomValue)
     const topCountry = topCountryRef.current.value
     const bottomCountry = bottomCountryRef.current.value
-
     if (
       (isNaN(topValueAmount) && isNaN(bottomValueAmount)) ||
       (!isNaN(topValueAmount) && !isNaN(bottomValueAmount))
@@ -50,61 +49,64 @@ function App() {
     }
   }
 
-  https: return (
-    <main className="container">
-      <h1>The Currency Converter</h1>
-      {keys && (
-        <div className="top-row">
-          <select ref={topCountryRef}>
-            {keys.map((key) => (
-              <option value={key} key={key}>
-                {key}
-              </option>
-            ))}
-          </select>
-          <input
-            type="number"
-            placeholder="Enter Amount"
-            onChange={(e) => setTopValue(e.target.value)}
-            value={topValue}
-          />
+  return (
+    <main>
+      <form action="#" onSubmit={handleEnter} className="container">
+        <h1>The Currency Converter</h1>
+        {keys && (
+          <div className="top-row">
+            <select ref={topCountryRef}>
+              {keys.map((key) => (
+                <option value={key} key={key}>
+                  {key}
+                </option>
+              ))}
+            </select>
+            <input
+              type="number"
+              placeholder="Enter Amount"
+              onChange={(e) => setTopValue(e.target.value)}
+              value={topValue}
+            />
+          </div>
+        )}
+        <div className="equal">=</div>
+        {keys && (
+          <div className="bottom-row">
+            <select ref={bottomCountryRef}>
+              {keys.map((key) => (
+                <option value={key} key={key}>
+                  {key}
+                </option>
+              ))}
+            </select>
+            <input
+              type="number"
+              placeholder="Enter Amount"
+              onChange={(e) => setBottomValue(e.target.value)}
+              value={bottomValue}
+            />
+          </div>
+        )}
+        <div>
+          <button type="submit">Enter</button>
+          <button
+            type="button"
+            onClick={() => {
+              setBottomValue("", setTopValue(""), setShowNotification(false))
+            }}
+          >
+            New
+          </button>
         </div>
-      )}
-      <div className="equal">=</div>
-      {keys && (
-        <div className="bottom-row">
-          <select ref={bottomCountryRef}>
-            {keys.map((key) => (
-              <option value={key} key={key}>
-                {key}
-              </option>
-            ))}
-          </select>
-          <input
-            type="number"
-            placeholder="Enter Amount"
-            onChange={(e) => setBottomValue(e.target.value)}
-            value={bottomValue}
-          />
-        </div>
-      )}
-      <div>
-        <button onClick={handleEnter}>Enter</button>
-        <button
-          onClick={() => {
-            setBottomValue("", setTopValue(""), setShowNotification(false))
-          }}
+        <p
+          className={`notification ${
+            showNotification ? "display-element" : "display-none"
+          }`}
         >
-          New
-        </button>
-      </div>
-      <p
-        className={`notification ${
-          showNotification ? "display-element" : "display-none"
-        }`}
-      >
-        Please Enter a valid amount in only one field
-      </p>
+          Please Enter a valid amount in only one field
+        </p>
+      </form>
     </main>
   )
 }
