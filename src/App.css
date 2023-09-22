@@ -4,7 +4,7 @@
   margin-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
-  height: 50vh;
+  height: 60vh;
   border-radius: 0.3rem;
   box-shadow: 0 0 20px hsl(265, 33%, 79%);
   display: flex;
@@ -46,6 +46,7 @@ input {
 
 button {
   margin-top: 2rem;
+  margin-bottom: 1.5rem;
   width: 7rem;
   height: 2.5rem;
   border-radius: 0.3rem;
@@ -81,4 +82,21 @@ button:active {
   font-size: x-large;
   font-weight: 700;
   color: hsl(332, 87%, 61%);
+}
+
+.notification {
+  color: red;
+  font-weight: 600;
+  text-align: center;
+}
+
+.display-none {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.display-element {
+  opacity: 1;
+
+  transition: opacity 0.2s ease;
 }
