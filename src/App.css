@@ -4,7 +4,7 @@
   margin-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
-  height: 30vh;
+  height: 50vh;
   border-radius: 0.3rem;
   box-shadow: 0 0 20px hsl(265, 33%, 79%);
   display: flex;
@@ -42,6 +42,28 @@ input {
   font-size: medium;
   border-radius: 0.3rem;
   box-shadow: 0 0 3px gray;
+}
+
+button {
+  margin-top: 2rem;
+  width: 7rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-size: 1.2rem;
+  background-color: hsl(265, 33%, 39%);
+  color: white;
+  box-shadow: 0 0 20px hsl(265, 33%, 59%);
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(0.9);
 }
 
 .from-row {

@@ -25,7 +25,11 @@ function App() {
     )
   }, [])
 
-  //  &currencies=EUR%2CUSD%2CCAD&base_currency=BRL
+  const handleEnter = () => {
+    console.log("Enter Clicked")
+  }
+
+  //  &currencies=EUR&base_currency=BRL
 
   return (
     <main className="container">
@@ -41,6 +45,7 @@ function App() {
           <CurrencyRow currencies={currencies} />
         </div>
       )}
+      <button onClick={handleEnter}>Enter</button>
     </main>
   )
 }
