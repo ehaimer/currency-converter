@@ -1,7 +1,7 @@
-import "./App.css"
+import "./CurrencyConverterApp.css"
 import { useEffect, useState, useRef } from "react"
 
-function App() {
+function CurrencyConverterApp() {
   const topCountryRef = useRef()
   const bottomCountryRef = useRef()
   const apiKey = process.env.REACT_APP_API_KEY
@@ -111,4 +111,4 @@ function App() {
   )
 }
 
-export default App
+export default CurrencyConverterApp
