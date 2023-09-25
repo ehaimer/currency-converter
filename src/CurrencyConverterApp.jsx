@@ -53,16 +53,16 @@ function CurrencyConverterApp() {
       <form
         action="#"
         onSubmit={handleEnter}
-        className="w-[80%] min-w-[415px] max-w-[1000px] my-16 mx-auto h-[50vh] rounded-md shadow-md shadow-forth flex flex-col  items-center"
+        className="w-[300px] my-16 mx-auto h-[350px] rounded-md shadow-all flex flex-col  items-center"
       >
-        <h1 className="text-[1.3rem] whitespace-nowrap font-bold text-primary mb-6 mt-12">
+        <h1 className="text-[1.3rem] whitespace-nowrap font-bold text-primary my-8">
           The Currency Converter
         </h1>
         {keys && (
           <div className="flex gap-2">
             <select
               ref={topCountryRef}
-              className="rounded-lg p-2 outline-forth text-lg border border-forth w-20 text-forth bg-gray-100 font-bold"
+              className="rounded-lg p-2 outline-forth text-lg border border-forth w-20 text-forth bg-gray-100 font-bold shadow-all"
             >
               {keys.map((key) => (
                 <option value={key} key={key}>
@@ -72,7 +72,7 @@ function CurrencyConverterApp() {
             </select>
             <input
               type="number"
-              className="py-1 px-2 outline-forth text-forth text-lg rounded-sm shadow-md"
+              className="py-1 px-2 outline-forth text-forth text-lg rounded-sm shadow-allGray w-[10rem]"
               placeholder="Enter Amount"
               onChange={(e) => setTopValue(e.target.value)}
               value={topValue}
@@ -84,7 +84,7 @@ function CurrencyConverterApp() {
           <div className="flex gap-2 flex-row-reverse">
             <select
               ref={bottomCountryRef}
-              className="rounded-lg p-2 outline-forth text-lg border border-forth w-20 text-forth bg-gray-100 font-bold"
+              className="rounded-lg p-2 outline-forth text-lg border border-forth w-20 text-forth bg-gray-100 font-bold shadow-all"
             >
               {keys.map((key) => (
                 <option value={key} key={key}>
@@ -94,7 +94,7 @@ function CurrencyConverterApp() {
             </select>
             <input
               type="number"
-              className="px-2 py-1 outline-forth text-forth text-lg rounded-sm shadow-md"
+              className="px-2 py-1 outline-forth text-forth text-lg rounded-sm shadow-allGray w-[10rem]"
               placeholder="Enter Amount"
               onChange={(e) => setBottomValue(e.target.value)}
               value={bottomValue}
@@ -104,13 +104,13 @@ function CurrencyConverterApp() {
         <div>
           <button
             type="submit"
-            className="mt-8 mb-6 mx-2 w-32 h-10 rounded-lg border-none text-xl bg-forth text-white shadow-sm shadow-forth transition-transform hover:scale-105 active:scale-95 font-bold"
+            className="shadow-all mt-8 mb-6 mx-2 w-28 h-10 rounded-lg border-none text-xl bg-forth text-white transition-transform hover:scale-105 active:scale-95 font-bold"
           >
             Enter
           </button>
           <button
             type="button"
-            className="mt-8 mb-6 mx-2 w-32 h-10 rounded-lg border-none text-xl bg-forth text-white shadow-sm shadow-forth transition-transform hover:scale-105 ctive:scale-95 font-bold"
+            className="mt-8 mb-6 mx-2 w-28 h-10 rounded-lg border-none text-xl bg-forth text-white shadow-all transition-transform hover:scale-105 ctive:scale-95 font-bold"
             onClick={() => {
               setBottomValue("", setTopValue(""), setShowNotification(false))
             }}

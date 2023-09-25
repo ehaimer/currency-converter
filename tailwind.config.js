@@ -10,6 +10,10 @@ module.exports = {
         third: "hsl(299, 96%, 48%)",
         forth: "	hsl(265, 33%, 49%)",
       },
+      boxShadow: {
+        all: "0 0 5px hsl(265, 33%, 49%)",
+        allGray: "0 0 5px hsl(0, 3%, 80%)",
+      },
     },
   },
   plugins: [],
