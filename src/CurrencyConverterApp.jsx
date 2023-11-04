@@ -81,7 +81,12 @@ function CurrencyConverterApp() {
               type="number"
               className="py-1 px-2 outline-forth text-forth text-lg rounded-sm shadow-allGray w-[10rem]"
               placeholder="Enter Amount"
-              onChange={(e) => setTopValue(e.target.value)}
+              onChange={(e) => {
+                const inputValue = e.target.value
+                if (inputValue >= 0) {
+                  setTopValue(inputValue)
+                }
+              }}
               value={topValue}
             />
           </div>
@@ -103,7 +108,12 @@ function CurrencyConverterApp() {
               type="number"
               className="px-2 py-1 outline-forth text-forth text-lg rounded-sm shadow-allGray w-[10rem]"
               placeholder="Enter Amount"
-              onChange={(e) => setBottomValue(e.target.value)}
+              onChange={(e) => {
+                const inputValue = e.target.value
+                if (inputValue >= 0) {
+                  setBottomValue(inputValue)
+                }
+              }}
               value={bottomValue}
             />
           </div>
