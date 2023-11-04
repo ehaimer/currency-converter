@@ -19,7 +19,8 @@ function CurrencyConverterApp() {
       })
   }, [])
 
-  const handleEnter = async () => {
+  const handleEnter = async (e) => {
+    e.preventDefault()
     setShowNotification(false)
     const topValueAmount = parseFloat(topValue)
     const bottomValueAmount = parseFloat(bottomValue)
